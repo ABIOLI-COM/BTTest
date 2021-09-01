@@ -1,0 +1,14 @@
+﻿@page "/"
+
+@* No architecture at all: just the code to call the back end *@
+
+<h1>Card hand evaluator</h1>
+
+<EditForm Model="@FormModel" OnSubmit=@FormSubmitted>
+    <label for="handRep">Hand representation</label>
+    <InputText id="handRep" @bind-Value="FormModel.HandRep"></InputText>
+    <input type="submit" class="btn btn-primary" value="Evaluate"/>
+</EditForm>
+
+<div hidden="@(CalculatedValue < 0)">The calculated result is: @(CalculatedValue)</div>
+<div hidden="@(string.IsNullOrEmpty(ErrorMessage))">There is an error: @(ErrorMessage)</div>
